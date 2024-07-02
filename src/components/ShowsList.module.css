@@ -1,6 +1,9 @@
+main {
+   padding: 1rem;
+}
+
 h1 {
    text-align: center;
-   padding: 1.5rem;
 }
 
 ul {
@@ -9,5 +12,5 @@ ul {
    flex-wrap: wrap;
    justify-content: center;
    gap: 2rem;
-   /* column-gap: 2rem; */
+   padding: 1.5rem 0;
 }

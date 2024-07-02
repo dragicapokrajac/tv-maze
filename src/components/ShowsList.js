@@ -4,7 +4,7 @@ import classes from './ShowsList.module.css';
 
 const ShowsList = ({ shows }) => {
    return (
-      <>
+      <main>
          <h1>Trending Shows</h1>
          <ul>
             {shows.map(show =>
@@ -14,11 +14,12 @@ const ShowsList = ({ shows }) => {
                   score={show.score}
                   year={show.show.premiered}
                   image={show.show.image?.medium}
+                  link={show.show._links.self.href}
                />
             )}
          </ul>
 
-      </>
+      </main>
    );
 };
 

@@ -3,7 +3,7 @@ import classes from './ShowItem.module.css';
 import star from '../images/star.png';
 
 
-const ShowItem = ({ name, score, year, image }) => {
+const ShowItem = ({ name, score, year, image, link }) => {
 
    let yearPremiered;
 
@@ -14,10 +14,12 @@ const ShowItem = ({ name, score, year, image }) => {
       yearPremiered = '-'
    };
 
-   console.log(score.toFixed(2));
+   const showDetailHandler = () => {
+      console.log(link)
+   }
 
    return (
-      <li className={classes.container}>
+      <li className={classes.container} onClick={showDetailHandler}>
          <img
             src={image ? image : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'}
             alt={name}
