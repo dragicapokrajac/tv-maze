@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import ShowsList from './components/ShowsList';
 
 function App() {
    const [shows, setShows] = useState([]);
@@ -19,18 +20,9 @@ function App() {
    };
 
    return (
-      <div className="App">
-         <ul>
-            {shows.map(show =>
-               <li key={show.show.id}>
-                  <p>{show.show.name}</p>
-                  <p>{show.score}</p>
-                  <p>{show.show.premiered}</p>
-                  <img src={show.show.image?.medium} />
-               </li>
-            )}
-         </ul>
-      </div>
+      <>
+         <ShowsList shows={shows} />
+      </>
    );
 }
 

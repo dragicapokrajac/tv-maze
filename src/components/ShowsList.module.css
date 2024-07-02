@@ -1,0 +1,13 @@
+h1 {
+   text-align: center;
+   padding: 1.5rem;
+}
+
+ul {
+   list-style: none;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 2rem;
+   /* column-gap: 2rem; */
+}
