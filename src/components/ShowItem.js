@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './ShowItem.module.css';
 import star from '../images/star.png';
+import { Link } from 'react-router-dom';
 
 
 const ShowItem = ({ name, score, year, image, link }) => {
@@ -14,26 +15,24 @@ const ShowItem = ({ name, score, year, image, link }) => {
       yearPremiered = '-'
    };
 
-   const showDetailHandler = () => {
-      console.log(link)
-   }
-
    return (
-      <li className={classes.container} onClick={showDetailHandler}>
-         <img
-            src={image ? image : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'}
-            alt={name}
-         />
-         <div className={classes.infoWrapper}>
-            <h3>{name}</h3>
-            <div className={classes.showInfo}>
-               <p>
-                  <span>{score.toFixed(2)}</span>
-                  <img src={star} className={classes.starImg} />
-               </p>
-               <p>{yearPremiered}</p>
+      <li className={classes.container}>
+         <Link to='show-details'>
+            <img
+               src={image ? image : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'}
+               alt={name}
+            />
+            <div className={classes.infoWrapper}>
+               <h3>{name}</h3>
+               <div className={classes.showInfo}>
+                  <p>
+                     <span>{score.toFixed(2)}</span>
+                     <img src={star} className={classes.starImg} />
+                  </p>
+                  <p>{yearPremiered}</p>
+               </div>
             </div>
-         </div>
+         </Link>
       </li>
    );
 };

@@ -1,27 +1,33 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import ShowsList from './components/ShowsList';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import ShowsPage, { loader as showsLoader } from './pages/Shows';
+import ShowDetails from './components/ShowDetails';
+import RootLayout from './components/Root';
+import ErrorPage from './pages/Error';
 
 function App() {
-   const [shows, setShows] = useState([]);
 
-   useEffect(() => {
-      getShows();
-   }, []);
-
-   const getShows = async () => {
-      try {
-         const response = await axios.get('https://api.tvmaze.com/search/shows?q=all');
-         const data = response.data;
-         setShows(data);
-      } catch (error) {
-         console.error(error);
-      }
-   };
+   const router = createBrowserRouter([
+      {
+         path: '/',
+         element: <RootLayout />,
+         errorElement: <ErrorPage />,
+         children: [
+            {
+               index: true,
+               element: <ShowsPage />,
+               loader: showsLoader,
+            },
+            {
+               path: 'show-details',
+               element: <ShowDetails />
+            }
+         ],
+      },
+   ]);
 
    return (
       <>
-         <ShowsList shows={shows} />
+         <RouterProvider router={router} />
       </>
    );
 }

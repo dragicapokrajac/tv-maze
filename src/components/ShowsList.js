@@ -1,10 +1,9 @@
-import React from 'react';
 import ShowItem from './ShowItem';
 import classes from './ShowsList.module.css';
 
 const ShowsList = ({ shows }) => {
    return (
-      <main>
+      <>
          <h1>Trending Shows</h1>
          <ul>
             {shows.map(show =>
@@ -18,8 +17,7 @@ const ShowsList = ({ shows }) => {
                />
             )}
          </ul>
-
-      </main>
+      </>
    );
 };
 
