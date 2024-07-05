@@ -1,11 +1,10 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import ShowsPage, { loader as showsLoader } from './pages/Shows';
-import ShowDetails from './components/ShowDetails';
 import RootLayout from './components/Root';
 import ErrorPage from './pages/Error';
+import ShowsPage, { loader as showsLoader } from './pages/Shows';
+import ShowPage, { loader as showLoader } from './pages/Show';
 
 function App() {
-
    const router = createBrowserRouter([
       {
          path: '/',
@@ -18,9 +17,11 @@ function App() {
                loader: showsLoader,
             },
             {
-               path: 'show-details',
-               element: <ShowDetails />
-            }
+               path: 'show-details/:showId',
+               id: 'show-details',
+               element: <ShowPage />,
+               loader: showLoader,
+            },
          ],
       },
    ]);

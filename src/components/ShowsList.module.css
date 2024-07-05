@@ -1,9 +1,15 @@
+/* .showsContainer { */
 main {
    padding: 1rem;
+   color: #212121;
+   background-color: ivory;
 }
 
 h1 {
    text-align: center;
+   font-size: 3rem;
+   color: #f54337;
+   padding: 1rem 0;
 }
 
 ul {
