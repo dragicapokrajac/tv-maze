@@ -1,0 +1,41 @@
+.infoWrapper {
+   display: flex;
+   flex-direction: column;
+   gap: 0.5rem;
+}
+
+.infoWrapper h2 {
+   color: #f54337;
+}
+
+
+.infoWrapper p {
+   line-height: 1.6rem;
+}
+
+.season {
+   font-weight: 500;
+   color: #f54337;
+}
+
+.span {
+   font-weight: 500;
+}
+
+.btn {
+   width: fit-content;
+   align-self: flex-end;
+   margin: 1rem 0 0;
+   padding: 0.4rem 1rem;
+   font-size: 1rem;
+   background-color: #f54337;
+   color: ivory;
+   border: 1px solid #f54337;
+   border-radius: 3px;
+}
+
+.btn:hover {
+   background-color: #fd2f20;
+   border-color: #fd2f20;
+   cursor: pointer;
+}

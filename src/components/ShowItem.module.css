@@ -18,7 +18,7 @@
 }
 
 .infoWrapper {
-   background-color: hsla(0, 0%, 13%, 0.9);
+   background-color: rgba(13, 13, 13, 0.9);
    color: ivory;
    padding: 0.6rem;
    border-radius: 0 0 3px 3px;
