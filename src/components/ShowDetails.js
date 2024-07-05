@@ -1,23 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import classes from './ShowDetails.module.css';
+import Episode from './Episode';
+import axios from 'axios';
+import { removeTags } from '../helpers';
 
 const ShowDetails = ({ show }) => {
+   const [episodeIsShown, setEpisodeIsShown] = useState(false);
+   const [episodeData, setEpisodeData] = useState({})
 
-   let description;
+   const urlPrevEpisode = show._links.previousepisode?.href;
+   const urlNextEpisode = show._links.nextepisode?.href;
 
-   function removeTags(str) {
-      if ((str === null) || (str === '')) {
-         return description = '-';
-      } else {
-         return str.replace(/(<([^>]+)>)/ig, '');
+   const fetchEpisodeDetail = async (url) => {
+      try {
+         const response = await axios.get(url);
+         const data = response.data;
+         setEpisodeData(data);
+      } catch (error) {
+         console.error(error);
       };
    };
 
-   description = removeTags(show.summary);
+   const openEpisodeHandler = (url) => {
+      setEpisodeIsShown(true);
+      fetchEpisodeDetail(url);
+   };
+
+   const closeEpisodeHandler = () => {
+      setEpisodeIsShown(false);
+   };
+
+   let description = removeTags(show.summary);
+
+   const airDate = show.premiered
+      ? show.premiered
+      : '-';
+
+   const runtime = show.runtime
+      ? show.runtime
+      : '-';
 
    // let formattedDate;
-
    // if (show.premiered) {
    //    const date = new Date(show.premiered);
    //    formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
@@ -27,6 +51,7 @@ const ShowDetails = ({ show }) => {
 
    return (
       <>
+         {episodeIsShown && <Episode onCloseEpisode={closeEpisodeHandler} showName={show.name} episodeData={episodeData} />}
          <div className={classes.container}>
             <img
                src={show.image?.original ? show.image?.original : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'}
@@ -45,18 +70,23 @@ const ShowDetails = ({ show }) => {
                <p>{description}</p>
 
                <h3>Details:</h3>
-               <p>Status: <span className={classes.span}>{show.status}</span></p>
+               <p><span className={classes.span}>Status:</span> {show.status}</p>
                {/* <p>First air date: <span className={classes.span}>{formattedDate}</span></p> */}
-               <p>First air date:
-                  <span className={classes.span}>
-                     {show.premiered ? show.premiered : ' -'}
-                  </span>
-               </p>
-               <p>Spoken language: <span className={classes.span}>{show.language}</span></p>
-               <p>Runtime: <span className={classes.span}>{show.runtime} minute</span></p>
+               <p><span className={classes.span}>First air date: </span>{airDate}</p>
+               <p><span className={classes.span}>Spoken language: </span>{show.language}</p>
+               <p><span className={classes.span}>Runtime: </span>{runtime} min</p>
+               {urlPrevEpisode &&
+                  <button onClick={() => openEpisodeHandler(urlPrevEpisode)} className={classes.episodeBtn}>
+                     Previous episode
+                  </button>
+               }
+               {urlNextEpisode &&
+                  <button onClick={() => openEpisodeHandler(urlNextEpisode)} className={classes.episodeBtn}>
+                     Next episode
+                  </button>
+               }
             </div>
          </div>
-
       </>
    );
 };

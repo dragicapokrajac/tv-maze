@@ -18,14 +18,19 @@
 
 .link {
    text-decoration: none;
-   color: #212121;
+   color: #131313;
 }
 
 .link:hover {
-   /* color: #ffc205; */
+   /* color: #f54337; */
    text-decoration: underline;
    text-underline-offset: 0.3rem;
+   width: fit-content;
+}
 
+.infoWrapper {
+   display: flex;
+   flex-direction: column;
 }
 
 .infoWrapper h3 {
@@ -44,5 +49,22 @@
 }
 
 .span {
-   font-style: italic;
+   font-weight: 500;
+}
+
+.episodeBtn {
+   width: fit-content;
+   margin: 1rem 0 0;
+   padding: 0.4rem 1rem;
+   font-size: 1rem;
+   background-color: #f54337;
+   color: ivory;
+   border: 1px solid #f54337;
+   border-radius: 3px;
+}
+
+.episodeBtn:hover {
+   background-color: #fd2f20;
+   border-color: #fd2f20;
+   cursor: pointer;
 }
