@@ -1,6 +1,7 @@
 .container {
    position: relative;
    transition: transform 0.2s;
+
 }
 
 .container:hover {
@@ -8,21 +9,19 @@
    cursor: pointer;
 }
 
-img {
+.img {
    display: block;
-   /* width: 210px;
-   height: 295px; */
-   width: 250px;
-   height: 350px;
+   width: 15.5rem;
+   height: 21.8rem;
    object-fit: cover;
-   border-radius: 5px;
+   border-radius: 3px;
 }
 
 .infoWrapper {
    background-color: hsla(0, 0%, 13%, 0.9);
-   color: #fff;
+   color: ivory;
    padding: 0.6rem;
-   border-radius: 0 0 5px 5px;
+   border-radius: 0 0 3px 3px;
    position: absolute;
    width: 100%;
    transform: translate(0, -100%);

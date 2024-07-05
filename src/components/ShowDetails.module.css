@@ -1,0 +1,48 @@
+.container {
+   width: 100%;
+   display: flex;
+}
+
+.img {
+   display: block;
+   width: 25.5rem;
+   height: 95vh;
+   object-fit: cover;
+   border-radius: 3px;
+}
+
+
+.infoWrapper {
+   padding: 0 2rem;
+}
+
+.link {
+   text-decoration: none;
+   color: #212121;
+}
+
+.link:hover {
+   /* color: #ffc205; */
+   text-decoration: underline;
+   text-underline-offset: 0.3rem;
+
+}
+
+.infoWrapper h3 {
+   margin-top: 1.5rem;
+   line-height: 2rem;
+   text-transform: uppercase;
+}
+
+.genres {
+   margin-right: 1rem;
+   color: #f54337;
+}
+
+.infoWrapper p {
+   line-height: 1.6rem;
+}
+
+.span {
+   font-style: italic;
+}

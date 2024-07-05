@@ -1,7 +1,6 @@
 import { json, useLoaderData } from 'react-router-dom';
 import ShowsList from '../components/ShowsList';
 
-
 const ShowsPage = () => {
    const shows = useLoaderData();
 
